@@ -165,6 +165,8 @@ else
     log_info "SSH key already exists"
 fi
 
+
+
 # Create container manager script
 log_header "Creating Container Manager Script"
 cat > "$DEV_DIR/scripts/container-manager.sh" << 'SCRIPT_END'
@@ -461,23 +463,7 @@ else
     echo "" >> ~/.bashrc
 fi
 
-# Create VS Code settings
-log_header "Configuring VS Code Settings"
-mkdir -p "$HOME/.config/Code/User"
-cat > "$HOME/.config/Code/User/settings.json" << 'EOF'
-{
-    "terminal.integrated.defaultProfile.linux": "bash",
-    "python.defaultInterpreterPath": "/usr/bin/python3",
-    "files.eol": "\n",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
-    "docker.enableDockerComposeLanguageService": true,
-    "remote.containers.executeInWSL": true
-}
-EOF
-log_success "VS Code settings configured"
+
 
 # Final instructions
 log_header "Setup Complete!"
