@@ -14,7 +14,11 @@ PURPLE='\033[0;35m'
 NC='\033[0m'
 
 # Logging functions
-log_info() { echo -e "${BLUE}[INFO]${NC} $1"; }
+log_info() { echo
+echo "Manual VS Code Installation:"
+echo "  ${BLUE}sudo snap install code --classic${NC}     # Recommended method"
+echo "  ${BLUE}# OR download from: https://code.visualstudio.com${NC}"
+echo -e "${BLUE}[INFO]${NC} $1"; }
 log_success() { echo -e "${GREEN}[SUCCESS]${NC} $1"; }
 log_warning() { echo -e "${YELLOW}[WARNING]${NC} $1"; }
 log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
@@ -38,7 +42,7 @@ echo "- Essential development tools"
 echo "- Docker & Docker Compose"
 echo "- Node.js 20"
 echo "- Python development tools"
-echo "- VS Code"
+echo "- Claude Code CLI"
 echo "- Claude Code CLI"
 echo "- Git configuration"
 echo "- Container management scripts"
@@ -121,16 +125,6 @@ sudo usermod -aG docker $USER
 sudo systemctl enable docker
 sudo systemctl start docker
 log_success "Docker installed and configured"
-
-# Install VS Code
-log_header "Installing VS Code"
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
-sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
-
-sudo apt update
-sudo apt install -y code
-log_success "VS Code installed"
 
 # Install Claude Code CLI
 log_header "Installing Claude Code CLI"
