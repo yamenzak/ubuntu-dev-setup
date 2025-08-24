@@ -38,7 +38,7 @@ echo "- Essential development tools"
 echo "- Docker & Docker Compose"
 echo "- Node.js 20"
 echo "- Python development tools"
-echo "- VS Code with extensions"
+echo "- VS Code"
 echo "- Claude Code CLI"
 echo "- Git configuration"
 echo "- Container management scripts"
@@ -164,25 +164,6 @@ if [[ ! -f "$HOME/.ssh/id_ed25519" ]]; then
 else
     log_info "SSH key already exists"
 fi
-
-# Install VS Code extensions
-log_header "Installing VS Code Extensions"
-EXTENSIONS=(
-    "ms-vscode-remote.remote-containers"
-    "ms-python.python"
-    "Vue.volar"
-    "dsznajder.es7-react-js-snippets"
-    "esbenp.prettier-vscode"
-    "ms-vscode.vscode-eslint"
-    "eamodio.gitlens"
-    "ms-azuretools.vscode-docker"
-    "visualstudioexptteam.vscodeintellicode"
-)
-
-for extension in "${EXTENSIONS[@]}"; do
-    code --install-extension "$extension" --force
-done
-log_success "VS Code extensions installed"
 
 # Create container manager script
 log_header "Creating Container Manager Script"
